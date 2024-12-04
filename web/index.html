@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Iterative Anagram Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button id="settings-button" class="settings-button" aria-label="Settings">
+        <svg class="settings-icon" viewBox="0 0 24 24" width="24" height="24">
+            <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
+        </svg>
+    </button>
+    
+    <div id="settings-modal" class="settings-modal">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2>Settings & Info</h2>
+                <button class="close-settings-button">Close</button>
+            </div>
+            <div class="settings-body">
+                <section class="info-section">
+                    <h3>About This Program</h3>
+                    <p>Welcome to the Iterative Anagram Solver! This tool helps you find anagrams by:</p>
+                    <ul>
+                        <li>Allowing you to specify required words that must appear in solutions</li>
+                        <li>Letting you exclude words you don't want to see</li>
+                        <li>Finding perfect matches when your required words use all available letters</li>
+                        <li>Providing an interactive interface to explore different word combinations</li>
+                    </ul>
+                </section>
+                
+                <section class="settings-section">
+                    <h3>Settings</h3>
+                    <div class="setting-item">
+                        <div class="setting-header">
+                            <label for="max-word-length">Maximum Word Length:</label>
+                            <span class="setting-value" id="max-word-length-value">15</span>
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" 
+                                   id="max-word-length" 
+                                   min="1" 
+                                   max="15" 
+                                   value="15" 
+                                   class="slider">
+                            <div class="slider-labels">
+                                <span>1</span>
+                                <span>15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-header">
+                            <label for="min-word-length">Minimum Word Length:</label>
+                            <span class="setting-value" id="min-word-length-value">3</span>
+                        </div>
+                        <div class="slider-container">
+                            <input type="range" 
+                                   id="min-word-length" 
+                                   min="1" 
+                                   max="15" 
+                                   value="3" 
+                                   class="slider">
+                            <div class="slider-labels">
+                                <span>1</span>
+                                <span>15</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <div class="qr-code-section">
+                    <div class="qr-code-container">
+                        <img src="{{ url_for('static', filename='resources/GitHubQRCode.png') }}" alt="GitHub QR Code" class="qr-code-image">
+                    </div>
+                </div>
+                <div class="settings-footer">
+                    <button class="save-settings-button">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="title">Iterative Anagram Solver</h1>
+    <div class="input-container">
+        <input type="text" id="text-input" class="text-input" placeholder="---Enter Anagram String Here---">
+        <button class="start-button">Solve</button>
+    </div>
+    <div id="content-wrapper">
+        <div id="left-sidebar">
+            <div class="sidebar-header">
+                <h2>Required Words</h2>
+                <button class="reset-button" id="left-reset-button">Reset</button>
+            </div>
+            <div class="unused-chars-section">
+                <h3>Unused Characters</h3>
+                <div id="unused-chars-display"></div>
+            </div>
+            <div class="sidebar-input-container">
+                <input type="text" class="sidebar-text-input" placeholder="Add Required Word">
+                <button class="sidebar-add-button">Add</button>
+            </div>
+            <div id="left-word-grid"></div>
+        </div>
+        <div id="main-container">
+            <div class="word-grid-container">
+                <div id="word-grid"></div>
+            </div>
+        </div>
+        <div id="right-sidebar">
+            <div class="sidebar-header">
+                <h2>Excluded Words</h2>
+                <button class="reset-button" id="right-reset-button">Reset</button>
+            </div>
+            <div id="right-word-grid"></div>
+        </div>
+    </div>
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="loading-letter">S</div>
+            <div class="loading-letter">O</div>
+            <div class="loading-letter">L</div>
+            <div class="loading-letter">V</div>
+            <div class="loading-letter">I</div>
+            <div class="loading-letter">N</div>
+            <div class="loading-letter">G</div>
+        </div>
+    </div>
+    <div id="error-toast" class="error-toast"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
