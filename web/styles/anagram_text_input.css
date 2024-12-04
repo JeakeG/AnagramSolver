@@ -1,0 +1,50 @@
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--button-bg);
+    border-bottom: 1px solid var(--border-color);
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.text-input {
+    width: 60%;
+    max-width: 800px;
+    height: 50px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.text-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px var(--accent-color-hover);
+}
+
+.start-button {
+    height: 50px;
+    padding: 0 30px;
+    font-size: 18px;
+    font-weight: 500;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.start-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}

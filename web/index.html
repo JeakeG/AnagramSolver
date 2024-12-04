@@ -2,7 +2,17 @@
 <html>
 <head>
     <title>Iterative Anagram Solver</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/anagram_text_input.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/loading.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/popups.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/results_display.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/settings.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/sidebars.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/title.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/words.css') }}">
 </head>
 <body>
     <button id="settings-button" class="settings-button" aria-label="Settings">
@@ -72,7 +82,9 @@
             <div class="modal-footer">
                 <div class="qr-code-section">
                     <div class="qr-code-container">
-                        <img src="{{ url_for('static', filename='resources/GitHubQRCode.png') }}" alt="GitHub QR Code" class="qr-code-image">
+                        <a href="https://github.com/JeakeG/AnagramSolver" target="_blank">
+                            <img src="{{ url_for('static', filename='resources/GitHubQRCode.png') }}" alt="GitHub QR Code" class="qr-code-image" style="cursor: pointer;">
+                        </a>
                     </div>
                 </div>
                 <div class="settings-footer">

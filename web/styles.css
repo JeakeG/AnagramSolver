@@ -46,19 +46,16 @@
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-}
-
-body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
 }
 
 .title {
@@ -153,10 +150,10 @@ body {
     box-shadow: 0 0 10px var(--shadow-color);
 }
 
-#right-sidebar {
+/* #right-sidebar {
     border-right: none;
     border-left: 1px solid var(--border-color);
-}
+} */
 
 #main-container {
     width: 60%;

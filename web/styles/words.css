@@ -1,0 +1,14 @@
+.word.required {
+    color: #50e955;
+    font-weight: 500;
+}
+
+.word.excluded,
+.word-text.excluded {
+    color: var(--error-color);
+    font-weight: 500;
+}
+
+#word-grid {
+    padding: 0;
+}

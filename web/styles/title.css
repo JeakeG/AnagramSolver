@@ -1,0 +1,24 @@
+.title {
+    text-align: center;
+    font-size: 3.2em;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 5px 0 10px 0;
+    padding: 5px;
+    text-shadow: 2px 2px 4px var(--shadow-color);
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
